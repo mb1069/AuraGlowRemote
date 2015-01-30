@@ -4,20 +4,20 @@ import android.content.Context;
 import android.hardware.ConsumerIrManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import io.github.dadude941.auraglowremote.R;
-import io.github.dadude941.auraglowremote.nec.NECFactory;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+public class MainActivity extends ActionBarActivity {
     private static final String TAG = "MainActivity";
 
     private ConsumerIrManager irManager;
-    private Button testButton;
+    private EditText codeEdit;
+    private Button nextButton;
+    private Button prevButton;
+    private int code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,18 +26,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         //noinspection ResourceType
         irManager = (ConsumerIrManager)getSystemService(Context.CONSUMER_IR_SERVICE);
-        testButton = (Button)findViewById(R.id.btn_test);
-        testButton.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        int[] pattern = NECFactory
-                .createCommand()
-                .addInteger(0x00F7C03F, (byte)32)
-                .getPattern(5);
-
-        irManager.transmit(38000, pattern);
     }
 
 

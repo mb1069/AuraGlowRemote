@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Command factory capable of generating IR commands that adhere to NEC protocol.
  */
-class NECFactory implements NECCommand {
+public class NECFactory implements NECCommand {
     /** Maximum time limit. */
     protected static final int MAX_TIME       = 2000000;
     /** Maximum length of any single frame. **/
@@ -44,6 +44,14 @@ class NECFactory implements NECCommand {
         this.accumulatedLength = 0;
 
         addHandshake();
+    }
+
+    /**
+     * Creates a new factory instance.
+     * @return A new factory instance.
+     */
+    public static NECFactory createCommand(){
+        return new NECFactory();
     }
 
     @Override
