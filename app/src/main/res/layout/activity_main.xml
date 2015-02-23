@@ -4,4 +4,63 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RED"
+        android:id="@+id/red_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width= "fill_parent"
+        android:layout_height="90dp"
+        android:id="@+id/editText"
+        android:layout_below="@+id/red_button"
+        android:layout_marginTop="66dp"
+        android:layout_alignParentEnd="true"
+        android:text="00F720DF" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GREEN"
+        android:id="@+id/green_button"
+        android:layout_alignBottom="@+id/red_button"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BLUE"
+        android:id="@+id/blue_button"
+        android:layout_alignBottom="@+id/green_button"
+        android:layout_alignEnd="@+id/editText" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Up"
+        android:id="@+id/up_button"
+        android:layout_below="@+id/red_button"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Down"
+        android:id="@+id/down_button"
+        android:layout_alignBottom="@+id/up_button"
+        android:layout_alignEnd="@+id/green_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="On/Off"
+        android:id="@+id/onOff_button"
+        android:layout_alignBottom="@+id/down_button"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
