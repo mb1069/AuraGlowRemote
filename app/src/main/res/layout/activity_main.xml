@@ -10,57 +10,157 @@
         android:layout_height="wrap_content"
         android:text="RED"
         android:id="@+id/red_button"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width= "fill_parent"
-        android:layout_height="90dp"
-        android:id="@+id/editText"
-        android:layout_below="@+id/red_button"
-        android:layout_marginTop="66dp"
-        android:layout_alignParentEnd="true"
-        android:text="00F720DF" />
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/up_button"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GREEN"
         android:id="@+id/green_button"
-        android:layout_alignBottom="@+id/red_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/red_button"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BLUE"
         android:id="@+id/blue_button"
-        android:layout_alignBottom="@+id/green_button"
-        android:layout_alignEnd="@+id/editText" />
+        android:layout_alignTop="@+id/red_button"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Up"
         android:id="@+id/up_button"
-        android:layout_below="@+id/red_button"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Down"
         android:id="@+id/down_button"
-        android:layout_alignBottom="@+id/up_button"
-        android:layout_alignEnd="@+id/green_button" />
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/green_button" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="On/Off"
         android:id="@+id/onOff_button"
-        android:layout_alignBottom="@+id/down_button"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignTop="@+id/up_button"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BLUE2"
+        android:id="@+id/blue_button_2"
+        android:layout_below="@+id/red_button"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RED2"
+        android:id="@+id/red_button_2"
+        android:layout_alignTop="@+id/blue_button_2"
+        android:layout_alignStart="@+id/red_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GREEN2"
+        android:id="@+id/green_button_2"
+        android:layout_alignBottom="@+id/red_button_2"
+        android:layout_alignStart="@+id/green_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BLUE3"
+        android:id="@+id/blue_button_3"
+        android:layout_below="@+id/blue_button_2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="26dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RED3"
+        android:id="@+id/red_button_3"
+        android:layout_alignTop="@+id/blue_button_3"
+        android:layout_alignStart="@+id/red_button_2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GREEN3"
+        android:id="@+id/green_button_3"
+        android:layout_alignTop="@+id/red_button_3"
+        android:layout_alignStart="@+id/green_button_2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BLUE4"
+        android:id="@+id/blue_button_4"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/blue_button_3"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RED4"
+        android:id="@+id/red_button_4"
+        android:layout_alignBottom="@+id/blue_button_4"
+        android:layout_alignStart="@+id/red_button_3" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GREEN4"
+        android:id="@+id/green_button_4"
+        android:layout_alignBottom="@+id/red_button_4"
+        android:layout_alignStart="@+id/green_button_3" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FLASH"
+        android:id="@+id/flash_button"
+        android:layout_below="@+id/blue_button_4"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="26dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FADE"
+        android:id="@+id/fade_button"
+        android:layout_alignTop="@+id/flash_button"
+        android:layout_alignStart="@+id/red_button_4" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SMOOTH"
+        android:id="@+id/smooth_button"
+        android:layout_alignBottom="@+id/fade_button"
+        android:layout_alignStart="@+id/green_button_4" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STROBE"
+        android:id="@+id/strobe_button"
+        android:layout_below="@+id/fade_button"
+        android:layout_marginTop="33dp"
+        android:layout_alignEnd="@+id/flash_button" />
 
 </RelativeLayout>
