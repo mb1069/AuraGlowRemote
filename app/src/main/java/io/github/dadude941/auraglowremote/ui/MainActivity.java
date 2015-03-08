@@ -1,11 +1,9 @@
 package io.github.dadude941.auraglowremote.ui;
 
-import android.content.Context;
-import android.hardware.ConsumerIrManager;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.ActionBarActivity;
+import android.appwidget.AppWidgetManager;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 
@@ -13,18 +11,14 @@ import java.util.HashMap;
 
 import io.github.dadude941.auraglowremote.AuraGlowCodes;
 import io.github.dadude941.auraglowremote.R;
-import io.github.dadude941.auraglowremote.ir.IRThread;
-import io.github.dadude941.auraglowremote.nec.NECFactory;
+import io.github.dadude941.auraglowremote.ir.IRService;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
-    private static final String TAG = "MainActivity";
-
-    private IRThread irThread;
-
-    private Handler handler;
     private boolean onOff = false;
+
     private static HashMap<Integer, Integer> codeLookup = new HashMap<>();
+
     static {
         codeLookup.put(R.id.up_button, AuraGlowCodes.BRIGHTNESS_UP);
         codeLookup.put(R.id.down_button, AuraGlowCodes.BRIGHTNESS_DOWN);
@@ -46,93 +40,53 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         codeLookup.put(R.id.fade_button, AuraGlowCodes.PATTERN_FADE);
         codeLookup.put(R.id.smooth_button, AuraGlowCodes.PATTERN_SMOOTH);
         codeLookup.put(R.id.strobe_button, AuraGlowCodes.PATTERN_STROBE);
-
-
-
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        irThread = new IRThread(getApplicationContext());
-        handler = irThread.getHandler();
 
-        findViewById(R.id.onOff_button).setOnClickListener(this);
-        findViewById(R.id.up_button).setOnClickListener(this);
-        findViewById(R.id.down_button).setOnClickListener(this);
+        int[] buttonIds = {R.id.onOff_button, R.id.up_button, R.id.down_button, R.id.red_button, R.id.green_button, R.id.blue_button, R.id.red_button_2, R.id.green_button_2, R.id.blue_button_2, R.id.red_button_3, R.id.green_button_3, R.id.blue_button_3, R.id.red_button_4, R.id.green_button_4, R.id.blue_button_4, R.id.flash_button, R.id.fade_button, R.id.strobe_button, R.id.smooth_button};
+        for (int id: buttonIds){
+            findViewById(id).setOnClickListener(this);
+        }
 
-        findViewById(R.id.red_button).setOnClickListener(this);
-        findViewById(R.id.green_button).setOnClickListener(this);
-        findViewById(R.id.blue_button).setOnClickListener(this);
-
-        findViewById(R.id.red_button_2).setOnClickListener(this);
-        findViewById(R.id.green_button_2).setOnClickListener(this);
-        findViewById(R.id.blue_button_2).setOnClickListener(this);
-
-        findViewById(R.id.red_button_3).setOnClickListener(this);
-        findViewById(R.id.green_button_3).setOnClickListener(this);
-        findViewById(R.id.blue_button_3).setOnClickListener(this);
-
-        findViewById(R.id.red_button_4).setOnClickListener(this);
-        findViewById(R.id.green_button_4).setOnClickListener(this);
-        findViewById(R.id.blue_button_4).setOnClickListener(this);
-
-        findViewById(R.id.flash_button).setOnClickListener(this);
-        findViewById(R.id.fade_button).setOnClickListener(this);
-        findViewById(R.id.strobe_button).setOnClickListener(this);
-        findViewById(R.id.smooth_button).setOnClickListener(this);
+        Intent intent = new Intent(this, TestWidget.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        sendBroadcast(intent);
+        Log.dd("[onCreate]", "Sent Setup Broadcast");
     }
 
     @Override
     public void onClick(View v) {
-        int val = 0;
+        int val;
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.onOff_button:
-                if (onOff){
+                if (onOff) {
                     val = AuraGlowCodes.TURN_OFF;
                 } else {
                     val = AuraGlowCodes.TURN_ON;
                 }
-                onOff=!onOff;
+                onOff = !onOff;
                 break;
             default:
                 val = codeLookup.get(v.getId());
                 break;
         }
-        Log.wtf("[fuck]", Integer.toHexString(val));
-
-        int[] pattern = NECFactory
-                .createCommand()
-                .addInteger(val, (byte)32)
-                .getPattern(5);
-
-        Message msg = handler.obtainMessage(IRThread.MSG_NAME, pattern);
-        handler.sendMessage(msg);
-
+        sendMessage(val);
     }
 
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    private void sendMessage(int val) {
+        Intent irServiceIntent = new Intent(this, IRService.class);
+        irServiceIntent.putExtra("key", val);
+        irServiceIntent.setAction("IR_MESSAGE");
+        Log.d("[mainActivity.sendMsg]", Integer.toHexString(val));
+        this.startService(irServiceIntent);
+    }
+
+
 }
