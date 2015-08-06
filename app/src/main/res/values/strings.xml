@@ -6,5 +6,24 @@
     <string name="action_settings">Settings</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="redButtonText">RED</string>
+    <string name="greenButtonText">GREEN</string>
+    <string name="blueButtonText">BLUE</string>
+    <string name="upButtonText">Up</string>
+    <string name="downButtonText">Down</string>
+    <string name="toggleButtonText">On/Off</string>
+    <string name="blue2ButtonText">BLUE2</string>
+    <string name="red2ButtonText">RED2</string>
+    <string name="green2ButtonText">GREEN2</string>
+    <string name="blue3ButtonText">BLUE3</string>
+    <string name="red3ButtonText">RED3</string>
+    <string name="green3ButtonText">GREEN3</string>
+    <string name="blue4ButtonText">BLUE4</string>
+    <string name="red4ButtonText">RED4</string>
+    <string name="green4ButtonText">GREEN4</string>
+    <string name="flashButtonText">FLASH</string>
+    <string name="fadeButtonText">FADE</string>
+    <string name="smoothButtonText">SMOOTH</string>
+    <string name="strobeButtonText">STROBE</string>
 
 </resources>

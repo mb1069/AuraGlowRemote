@@ -4,8 +4,9 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
 import android.hardware.ConsumerIrManager;
-import android.net.Uri;
 import android.util.Log;
+
+import java.util.Arrays;
 
 import io.github.dadude941.auraglowremote.AuraGlowCodes;
 import io.github.dadude941.auraglowremote.nec.NECFactory;
@@ -20,7 +21,7 @@ import io.github.dadude941.auraglowremote.nec.NECFactory;
 public class IRService extends IntentService {
     public static final String ACTION_NAME = "IR_MESSAGE";
 
-    private ConsumerIrManager irManager;
+    private ConsumerIrManager manager;
 
     public IRService() {
         super("IRService");
@@ -33,9 +34,9 @@ public class IRService extends IntentService {
         if (intent.getAction().equals(ACTION_NAME)) {
             int value = intent.getIntExtra("key", AuraGlowCodes.COLOR_GREEN);
             int[] pattern = formatMessage(value);
-            Log.e("[onHandleIntent]", "Transmitting: " + pattern);
-            irManager = (ConsumerIrManager) this.getSystemService(Context.CONSUMER_IR_SERVICE);
-            irManager.transmit(38000, pattern);
+            Log.e("[onHandleIntent]", "Transmitting: " + Arrays.toString(pattern));
+            manager = (ConsumerIrManager) this.getSystemService(Context.CONSUMER_IR_SERVICE);
+            manager.transmit(38000, pattern);
         }
     }
 

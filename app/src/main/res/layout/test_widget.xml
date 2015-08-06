@@ -1,20 +1,23 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="@dimen/widget_margin" android:background="#000099cc">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000099cc"
+    android:padding="@dimen/widget_margin">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ON"
         android:id="@+id/on_button"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OFF"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="ON" />
+
+    <Button
         android:id="@+id/off_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/on_button"
-        android:layout_toEndOf="@+id/on_button" />
+        android:layout_toEndOf="@+id/on_button"
+        android:text="OFF" />
 </RelativeLayout>
